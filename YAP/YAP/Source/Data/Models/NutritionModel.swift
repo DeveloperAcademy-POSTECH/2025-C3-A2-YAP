@@ -27,17 +27,17 @@ struct Body: Codable {
 // MARK: - 음식 영양성분 데이터
 struct FoodItem: Identifiable, Codable {
   let id = UUID()
-  let foodName : String
-  let servingSize : String  // 영양성분 기준량
-  let calories : String     // 칼로리
-  let protein : String      // 단백질
-  let fat : String          // 지방
-  let carbohydrate : String // 탄수화물
-  let sugar : String        // 당
-  let dietaryFiber : String // 식이섬유
-  let sodium : String       // 나트륨(mg)
-  let cholesterol : String  // 콜레스테롤
-  let saturatedFat : String // 포화지방
+  let foodName: String
+  let servingSize: String  // 영양성분 기준량
+  let calories: String     // 칼로리
+  let protein: String      // 단백질
+  let fat: String          // 지방
+  let carbohydrate: String // 탄수화물
+  let sugar: String        // 당
+  let dietaryFiber: String // 식이섬유
+  let sodium: String       // 나트륨(mg)
+  let cholesterol: String  // 콜레스테롤
+  let saturatedFat: String // 포화지방
   
   enum CodingKeys: String, CodingKey {
     case foodName = "FOOD_NM_KR"

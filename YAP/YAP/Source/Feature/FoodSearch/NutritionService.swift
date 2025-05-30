@@ -10,7 +10,7 @@ import Foundation
 // MARK: - 음식 영양성분 검색 (Swift Concurrency)
 @MainActor
 class NutritionService: ObservableObject {
-  @Published var foodItem : [FoodItem] = []
+  @Published var foodItem: [FoodItem] = []
   @Published var errorMessage: String?
   
   // API 기본 정보
@@ -44,15 +44,15 @@ class NutritionService: ObservableObject {
   // MARK: - API 호출 로직
   func fetchNutritionData(query: String) async throws -> [FoodItem] {
     
-    var components = URLComponents(string: URL)!
+    var components = URLComponents(string: URL)
     
-    components.queryItems = [
+    components?.queryItems = [
       URLQueryItem(name: "servicekey", value: serviceKey),
       URLQueryItem(name: "type", value: "json"),
       URLQueryItem(name: "FOOD_NM_KR", value: query)
     ]
     
-    guard let url = components.url else {
+    guard let url = components?.url else {
       throw URLError(.badURL)
     }
     
@@ -69,4 +69,3 @@ class NutritionService: ObservableObject {
     return foodData.body.items
   }
 }
-
