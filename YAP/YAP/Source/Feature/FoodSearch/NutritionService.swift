@@ -11,6 +11,7 @@ import Foundation
 @MainActor
 class NutritionService: ObservableObject {
   @Published var foodItem : [FoodItem] = []
+  @Published var errorMessage: String?
   
   // API 기본 정보
   private let URL = "https://apis.data.go.kr/1471000/FoodNtrCpntDbInfo02/getFoodNtrCpntDbInq02?"
@@ -22,6 +23,20 @@ class NutritionService: ObservableObject {
       let food = try await fetchNutritionData(query: query)
       self.foodItem = food
     } catch {
+      if let urlError = error as? URLError {
+        switch urlError.code {
+        case .notConnectedToInternet:
+          errorMessage = "인터넷 연결되어 있지 않습니다."
+        case .badServerResponse:
+          errorMessage = "서버와 통신이 원활하지 않습니다."
+        case .timedOut:
+          errorMessage = "요청 시간이 초과됐어요. 다시 시도해주세요."
+        case .badURL:
+          errorMessage = "올바른 URL이 아닙니다."
+        default:
+          errorMessage = "알 수 없는 오류가 발생했어요."
+        }
+      }
       print("\(error)")
     }
   }
