@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 final class NutritionService: ObservableObject {
   
-  static let shared = NutritionService()
+  static let shared = NutritionService() 
   
   private init() {}
   
@@ -76,7 +76,7 @@ final class NutritionService: ObservableObject {
       throw URLError(.cannotParseResponse)
     case 500..<600:
       throw URLError(.badServerResponse)
-    default :
+    default:
       throw URLError(.unknown)
     }
     
