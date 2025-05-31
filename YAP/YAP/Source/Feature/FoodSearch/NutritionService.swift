@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 final class NutritionService: ObservableObject {
   
-  static let shared = NutritionService() 
+  static let shared = NutritionService()
   
   private init() {}
   
