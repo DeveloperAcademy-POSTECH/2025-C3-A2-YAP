@@ -19,7 +19,7 @@ final class NutritionService: ObservableObject {
   @Published var errorMessage: String?
   
   // API 기본 정보
-  private let serviceKey = "jEXxxB7Q8KlPvUhb6pnfndpHx3tkbcB7xfNq6NvwHWYbWXRpHo4otl8aiWrC3A9WQUE5UIT7byapJ7zvReoNZA%3D%3D&type=json"
+  private let serviceKey = Bundle.main.infoDictionary?["API_KEY"] as? String
   
   // MARK: - 음식 검색 메서드
   func searchFood(query: String) async {
@@ -46,7 +46,7 @@ final class NutritionService: ObservableObject {
   }
   
   // MARK: - API 호출 로직
-  func fetchNutritionData(query: String) async throws -> [FoodItem] {
+  private func fetchNutritionData(query: String) async throws -> [FoodItem] {
     
     var components = URLComponents()
     components.scheme = "https"
