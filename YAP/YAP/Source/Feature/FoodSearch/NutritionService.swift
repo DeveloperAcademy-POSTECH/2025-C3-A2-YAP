@@ -19,7 +19,6 @@ final class NutritionService: ObservableObject {
   @Published var errorMessage: String?
   
   // API 기본 정보
-  private let URL = "https://apis.data.go.kr/1471000/FoodNtrCpntDbInfo02/getFoodNtrCpntDbInq02?"
   private let serviceKey = "jEXxxB7Q8KlPvUhb6pnfndpHx3tkbcB7xfNq6NvwHWYbWXRpHo4otl8aiWrC3A9WQUE5UIT7byapJ7zvReoNZA%3D%3D&type=json"
   
   // MARK: - 음식 검색 메서드
@@ -49,15 +48,18 @@ final class NutritionService: ObservableObject {
   // MARK: - API 호출 로직
   func fetchNutritionData(query: String) async throws -> [FoodItem] {
     
-    var components = URLComponents(string: URL)
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "apis.data.go.kr"
+    components.path = "/1471000/FoodNtrCpntDbInfo02/getFoodNtrCpntDbInq02"
     
-    components?.queryItems = [
+    components.queryItems = [
       URLQueryItem(name: "servicekey", value: serviceKey),
       URLQueryItem(name: "type", value: "json"),
       URLQueryItem(name: "FOOD_NM_KR", value: query)
     ]
     
-    guard let url = components?.url else {
+    guard let url = components.url else {
       throw URLError(.badURL)
     }
     
