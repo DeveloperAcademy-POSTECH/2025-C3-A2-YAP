@@ -170,6 +170,8 @@
 /* Begin XCBuildConfiguration section */
 		9EA2DE022DE6EB8B00A7D717 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 9EA2DDFB2DE6EB8900A7D717 /* YAP */;
+			baseConfigurationReferenceRelativePath = Source/Feature/FoodSearch/Secret.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -234,6 +236,8 @@
 		};
 		9EA2DE032DE6EB8B00A7D717 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 9EA2DDFB2DE6EB8900A7D717 /* YAP */;
+			baseConfigurationReferenceRelativePath = Source/Feature/FoodSearch/Secret.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
