@@ -58,9 +58,19 @@ class NutritionService: ObservableObject {
     
     let (data, response) = try await URLSession.shared.data(from: url)
     
-    guard let httpResponse = response as? HTTPURLResponse,
-          (200..<299).contains(httpResponse.statusCode) else {
+    guard let httpResponse = response as? HTTPURLResponse else {
       throw URLError(.badServerResponse)
+    }
+    
+    switch httpResponse.statusCode {
+    case 200..<300:
+      break
+    case 400..<500:
+      throw URLError(.cannotParseResponse)
+    case 500..<600:
+      throw URLError(.badServerResponse)
+    default :
+      throw URLError(.unknown)
     }
     
     let decoder = JSONDecoder()
