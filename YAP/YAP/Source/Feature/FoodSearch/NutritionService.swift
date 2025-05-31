@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - 음식 영양성분 검색 (Swift Concurrency)
 @MainActor
-class NutritionService: ObservableObject {
+final class NutritionService: ObservableObject {
   
   static let shared = NutritionService()
   
