@@ -10,6 +10,11 @@ import Foundation
 // MARK: - 음식 영양성분 검색 (Swift Concurrency)
 @MainActor
 class NutritionService: ObservableObject {
+  
+  static let shared = NutritionService()
+  
+  private init() {}
+  
   @Published var foodItem: [FoodItem] = []
   @Published var errorMessage: String?
   
